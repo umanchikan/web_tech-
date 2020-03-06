@@ -17,10 +17,10 @@
   <input type="text"  name='input' ><br>
   <input type="submit" name="送信" >
 </form>
-<% result = connection.exec("select* from crops WHERE
+<% result_false_goya = connection.exec("select* from crops WHERE
 quality = false;") %>
 <% data = [] %>
-<% result.each do |record| %>
+<% result_false_goya.each do |record| %>
   <%  data << "ゴーヤの大きさ：#{record["weight"]}　ゴーヤのサイズ:#{record["length"]} ゴーヤの品質：#{record["quality"]}　日付:#{record["date"]}　売った相手：#{record["give_for"]}" %>
 <% end %>
 <form action="task_goya.cgi" method="POST">
