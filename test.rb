@@ -12,7 +12,7 @@ server.mount('/indicate.cgi', WEBrick::HTTPServlet::CGIHandler, 'indicate.rb')
 server.mount('/goya.cgi', WEBrick::HTTPServlet::CGIHandler, 'goya.rb')
 
 #課題のため、追加したページです
-server.mount('/task', WEBrick::HTTPServlet::ERBHandler, 'task.html.erb')
+server.mount('/', WEBrick::HTTPServlet::ERBHandler, 'task.html.erb')
 server.mount('/task_indicate.cgi', WEBrick::HTTPServlet::CGIHandler, 'task_indicate.rb')
 server.mount('/task_goya.cgi', WEBrick::HTTPServlet::CGIHandler, 'task_goya.rb')
 server.start
