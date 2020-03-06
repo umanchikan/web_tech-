@@ -9,7 +9,7 @@
 <% connection.internal_encoding = "UTF-8" %>
 
 <% result_not_my_goya = connection.exec("select* from crops WHERE
-NOT (give_for = '自家消費');") %>>
+NOT (give_for = '自家消費');") %>
 <% data_not_my_goya = [] %>
 <% result_not_my_goya.each do |record| %>
   <% data_not_my_goya << "ゴーヤの大きさ：#{record["weight"]}　ゴーヤのサイズ:#{record["length"]} ゴーヤの品質：#{record["quality"]}　日付:#{record["date"]}　売った相手：#{record["give_for"]}" %>
@@ -17,11 +17,11 @@ NOT (give_for = '自家消費');") %>>
 <!-- formに囲まれている内容を、indicate.rb(cgi)に送信しますという記述 -->
 <!--'POST'メソッドを使用して送信-->
 <form action='task_indicate.cgi' method='POST'>
-  譲渡先が自家消費ではないもののgoyaの情報を載せたページに飛びます<br><br>
+  譲渡先が自家消費ではないもののゴーヤの情報を載せたページに飛びます<br><br>
   <!-- このinputに入力された情報が、submitの送信ボタンでデータとして送られる -->
   <!-- name='input'は送られた先の目印となる情報 -->
   <!-- type="text"は入力ができるフォームを作成するという記述 -->
-  <input type="text"  name='input' value="<%= data_not_my_goya.join(' ') %>" ><br>
+  <input type="text"  name='input' value="<%= data_not_my_goya.join(' ') %>" >
   <input type="submit" name="送信" >
 </form>
 <% result_false_goya = connection.exec("select* from crops WHERE
